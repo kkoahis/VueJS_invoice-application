@@ -53,6 +53,7 @@
           <p>Customer</p>
           <p>Due Date</p>
           <p>Total</p>
+          <p>Status</p>
         </div>
 
         <!-- item 1 -->
@@ -67,6 +68,8 @@
             <p v-else></p>
             <p>{{ item.due_date }}</p>
             <p>$ {{ item.total }}</p>
+            <p v-if="item.status === 0">Unpaid</p>
+            <p v-else>Paid</p>
           </div>
         </div>
         <div v-else>

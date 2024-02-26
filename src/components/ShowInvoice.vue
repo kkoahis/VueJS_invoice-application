@@ -7,6 +7,7 @@ import { defineProps } from 'vue'
 import router from '@/router/index.js';
 
 let form = ref({ id: '' })
+let successUrl = ref("")
 
 const props = defineProps({
     id: {
@@ -47,6 +48,19 @@ const deleteInvoice = (id) => {
 onMounted(() => {
     getInvoice()
 })
+
+const postSession = async (amount) => {
+    try {
+        const response = await axios.post(apiUrl + '/postSession', { amount: amount })
+        successUrl.value = response.data.data
+        // console.log(successUrl.value)
+        window.open(successUrl.value);
+        router.push('/')
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 </script>
 
 
@@ -184,6 +198,8 @@ onMounted(() => {
                                 <span>$ {{ form.total }}</span>
                             </div>
                         </div>
+                        <button @click="postSession(form.total)" style="padding: 5px 10px 5px 10px;" v-if="form.status === 0"
+                            class="btn btn-primary">Pay Now</button>
                     </div>
                 </div>
             </div>
