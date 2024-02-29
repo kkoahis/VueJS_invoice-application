@@ -201,7 +201,7 @@ const postSession = async (invoice) => {
                             </div>
                         </div>
                         <button @click="postSession(form)" style="padding: 5px 10px 5px 10px;" v-if="form.status === 0"
-                            class="btn btn-primary">Pay Now</button>
+                            class="btn btn-primary">Pay Now </button>
                         <button style="padding: 5px 10px 5px 10px;" v-else class="btn btn-primary" disabled>Already
                             Paid
                         </button>
