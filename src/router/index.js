@@ -4,6 +4,7 @@ import notFound from '../components/NotFound.vue'
 import NewInvoice from '../components/NewInvoice.vue'
 import ShowInvoice from '../components/ShowInvoice.vue'
 import EditInvoice from '../components/EditInvoice.vue'
+import SuccessPayment from '../components/SuccessPayment.vue'
 
 const routes = [
   {
@@ -31,7 +32,13 @@ const routes = [
     name: 'edit-invoice',
     component: EditInvoice,
     props: true
-  }
+  },
+  {
+    path: '/success',
+    name: 'success',
+    component: SuccessPayment,
+    props: route => ({ session_id: route.query.session_id })
+  },
 ]
 
 const router = createRouter({

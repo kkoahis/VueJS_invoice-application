@@ -49,11 +49,13 @@ onMounted(() => {
     getInvoice()
 })
 
-const postSession = async (amount) => {
+const postSession = async (invoice) => {
     try {
-        const response = await axios.post(apiUrl + '/postSession', { amount: amount })
+        const response = await axios.post(apiUrl + '/postSession', { invoice: invoice })
+
+        // console.log("response", response.data.data)
         successUrl.value = response.data.data
-        // console.log(successUrl.value)
+        // console.log("successUrl", successUrl.value)
         window.open(successUrl.value);
         router.push('/')
     } catch (error) {
@@ -198,8 +200,11 @@ const postSession = async (amount) => {
                                 <span>$ {{ form.total }}</span>
                             </div>
                         </div>
-                        <button @click="postSession(form.total)" style="padding: 5px 10px 5px 10px;" v-if="form.status === 0"
+                        <button @click="postSession(form)" style="padding: 5px 10px 5px 10px;" v-if="form.status === 0"
                             class="btn btn-primary">Pay Now</button>
+                        <button style="padding: 5px 10px 5px 10px;" v-else class="btn btn-primary" disabled>Already
+                            Paid
+                        </button>
                     </div>
                 </div>
             </div>
