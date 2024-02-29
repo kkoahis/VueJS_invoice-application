@@ -203,7 +203,7 @@ const postSession = async (invoice) => {
                         <button @click="postSession(form)" style="padding: 5px 10px 5px 10px;" v-if="form.status === 0"
                             class="btn btn-primary">Pay Now With Stripe</button>
                         <button style="padding: 5px 10px 5px 10px;" v-else class="btn btn-primary" disabled>Already
-                            Paid ^^
+                            Paid
                         </button>
                     </div>
                 </div>
